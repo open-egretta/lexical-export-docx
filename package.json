@@ -1,0 +1,49 @@
+{
+  "name": "@open-egretta/lexical-export-docx",
+  "version": "0.0.1",
+  "description": "Export Lexical editor content to .docx format",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "keywords": [
+    "lexical",
+    "editor",
+    "docx",
+    "export"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-egretta/lexical-export-docx"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "docx": "^9.6.1"
+  },
+  "peerDependencies": {
+    "lexical": ">=0.41.0"
+  },
+  "devDependencies": {
+    "@lexical/list": "^0.41.0",
+    "@lexical/rich-text": "^0.41.0",
+    "lexical": "^0.41.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
