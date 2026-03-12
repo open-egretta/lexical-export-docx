@@ -1,6 +1,6 @@
 {
   "name": "@open-egretta/lexical-export-docx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Export Lexical editor content to .docx format",
   "license": "MIT",
   "author": "",
@@ -15,7 +15,11 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "lexical",
     "editor",
@@ -38,6 +42,7 @@
     "lexical": ">=0.41.0"
   },
   "devDependencies": {
+    "@lexical/link": "^0.41.0",
     "@lexical/list": "^0.41.0",
     "@lexical/rich-text": "^0.41.0",
     "lexical": "^0.41.0",

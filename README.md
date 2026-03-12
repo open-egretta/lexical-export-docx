@@ -58,6 +58,7 @@ Converts a serialized editor state directly to a `.docx` `Blob`. Has zero depend
 | `heading`   | h1 – h6                     |
 | `text`      | Bold, italic, underline     |
 | `list`      | Bullet and numbered, nested |
+| `link`      | Hyperlink (inline)          |
 
 ## License
 

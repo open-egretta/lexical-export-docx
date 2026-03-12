@@ -1,11 +1,17 @@
-import { Paragraph, TextRun } from "docx";
+import { Paragraph, ParagraphChild } from "docx";
 import type { SerializedParagraphNode, SerializedTextNode } from "lexical";
+import type { SerializedLinkNode } from "@lexical/link";
 import { convertText } from "./text";
+import { convertLink } from "./link";
 
 export function convertParagraph(node: SerializedParagraphNode): Paragraph {
-  const runs = node.children
-    .filter((child): child is SerializedTextNode => child.type === "text")
-    .map((child) => convertText(child));
+  const runs = node.children.flatMap((child): ParagraphChild[] => {
+    if (child.type === "text")
+      return [convertText(child as SerializedTextNode)];
+    if (child.type === "link")
+      return [convertLink(child as SerializedLinkNode)];
+    return [];
+  });
 
   return new Paragraph({ children: runs });
 }
