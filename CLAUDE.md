@@ -33,7 +33,8 @@ src/
 │   ├── paragraph.ts       ← SerializedParagraphNode → docx Paragraph
 │   ├── heading.ts         ← SerializedHeadingNode → docx Paragraph (HeadingLevel)
 │   ├── text.ts            ← SerializedTextNode → docx TextRun (format bitmask)
-│   └── list.ts            ← SerializedListNode/ListItemNode → docx Paragraph[]
+│   ├── list.ts            ← SerializedListNode/ListItemNode → docx Paragraph[]
+│   └── table.ts           ← SerializedTableNode → docx Table
 └── core/
     └── builder.ts         ← new Document({ sections }) → Packer.toBlob()
 ```
@@ -69,16 +70,24 @@ export function exportDocx(editor: LexicalEditor) {
 
 Lexical stores text format as a **bitmask** on `SerializedTextNode.format`:
 
-| Bit | Format    |
-| --- | --------- |
-| 1   | Bold      |
-| 2   | Italic    |
-| 8   | Underline |
+| Bit | Format        |
+| --- | ------------- |
+| 1   | Bold          |
+| 2   | Italic        |
+| 4   | Strikethrough |
+| 8   | Underline     |
+| 32  | Subscript     |
+| 64  | Superscript   |
+| 128 | Highlight     |
 
 ```ts
 const isBold = (format & 1) !== 0;
 const isItalic = (format & 2) !== 0;
+const isStrike = (format & 4) !== 0;
 const isUnderline = (format & 8) !== 0;
+const isSubscript = (format & 32) !== 0;
+const isSuperscript = (format & 64) !== 0;
+const isHighlight = (format & 128) !== 0;
 ```
 
 ### Heading levels (`nodes/heading.ts`)
@@ -126,6 +135,7 @@ const HEADING_MAP = {
   "devDependencies": {
     "@lexical/list": "^0.41.0",
     "@lexical/rich-text": "^0.41.0",
+    "@lexical/table": "^0.41.0",
     "lexical": "^0.41.0",
     "tsup": "^8.5.1",
     "tsx": "^4.21.0",
@@ -197,13 +207,14 @@ it("converts bold text", () => {
 ### In scope
 
 - `paragraph`, `heading` (h1–h6)
-- `text` with bold / italic / underline
+- `text` with bold / italic / underline / strikethrough / subscript / superscript / highlight
 - `list` (bullet + numbered, nested)
+- `table` (rows, cells, header rows, col/row span)
 - Output: `Blob` only
 
 ### Out of scope (future)
 
-- Table, Image, Code Block
+- Image, Code Block
 - Buffer / Base64 output
 - Other editor adapters (TipTap, Slate)
 - Import docx → Lexical

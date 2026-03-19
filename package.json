@@ -1,6 +1,6 @@
 {
   "name": "@open-egretta/lexical-export-docx",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Export Lexical editor content to .docx format",
   "license": "MIT",
   "author": "",
@@ -45,6 +45,7 @@
     "@lexical/link": "^0.41.0",
     "@lexical/list": "^0.41.0",
     "@lexical/rich-text": "^0.41.0",
+    "@lexical/table": "^0.41.0",
     "lexical": "^0.41.0",
     "tsup": "^8.5.1",
     "tsx": "^4.21.0",

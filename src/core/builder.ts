@@ -1,6 +1,6 @@
-import { AlignmentType, Document, NumberFormat, Packer, Paragraph } from "docx";
+import { AlignmentType, Document, NumberFormat, Packer, Paragraph, Table } from "docx";
 
-export async function buildDocx(elements: Paragraph[]): Promise<Blob> {
+export async function buildDocx(elements: (Paragraph | Table)[]): Promise<Blob> {
   const doc = new Document({
     //
     numbering: {
