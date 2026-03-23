@@ -7,6 +7,8 @@ import { convertParagraph } from "./nodes/paragraph";
 import { convertHeading } from "./nodes/heading";
 import { convertList } from "./nodes/list";
 import { convertTable } from "./nodes/table";
+import { convertPageBreak } from "./nodes/page-break";
+import { convertHorizontalRule } from "./nodes/horizontalrule";
 
 export type DocxElement = Paragraph | Table;
 
@@ -21,6 +23,10 @@ export function serialize(children: SerializedLexicalNode[]): DocxElement[] {
         return [convertHeading(node as SerializedHeadingNode)];
       case "table":
         return [convertTable(node as SerializedTableNode)];
+      case "page-break":
+        return [convertPageBreak()];
+      case "horizontalrule":
+        return [convertHorizontalRule()];
       default:
         return [];
     }

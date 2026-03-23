@@ -1,6 +1,6 @@
 {
   "name": "@open-egretta/lexical-export-docx",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Export Lexical editor content to .docx format",
   "license": "MIT",
   "author": "",

@@ -52,14 +52,16 @@ Converts a serialized editor state directly to a `.docx` `Blob`. Has zero depend
 
 ## Supported nodes
 
-| Node        | Details                     |
-| ----------- | --------------------------- |
-| `paragraph` | Plain paragraph             |
-| `heading`   | h1 – h6                     |
-| `text`      | Bold, italic, underline, strikethrough, subscript, superscript, highlight |
-| `list`      | Bullet and numbered, nested |
-| `link`      | Hyperlink (inline)          |
-| `table`     | Rows, cells, header rows, col/row span |
+| Node             | Details                                                                   |
+| ---------------- | ------------------------------------------------------------------------- |
+| `paragraph`      | Plain paragraph                                                           |
+| `heading`        | h1 – h6                                                                   |
+| `text`           | Bold, italic, underline, strikethrough, subscript, superscript, highlight |
+| `list`           | Bullet and numbered, nested                                               |
+| `link`           | Hyperlink (inline)                                                        |
+| `table`          | Rows, cells, header rows, col/row span                                    |
+| `horizontalrule` | Horizontal rule (rendered as VML rect)                                    |
+| `page-break`     | Page break                                                                |
 
 ## License
 
