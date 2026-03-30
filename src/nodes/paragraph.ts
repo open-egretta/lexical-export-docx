@@ -3,6 +3,7 @@ import type { SerializedParagraphNode, SerializedTextNode } from "lexical";
 import type { SerializedLinkNode } from "@lexical/link";
 import { convertText } from "./text";
 import { convertLink } from "./link";
+import { getBlockStyle } from "./block-style";
 
 export function convertParagraph(node: SerializedParagraphNode): Paragraph {
   const runs = node.children.flatMap((child): ParagraphChild[] => {
@@ -13,5 +14,5 @@ export function convertParagraph(node: SerializedParagraphNode): Paragraph {
     return [];
   });
 
-  return new Paragraph({ children: runs });
+  return new Paragraph({ children: runs, ...getBlockStyle(node) });
 }

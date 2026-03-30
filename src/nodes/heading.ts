@@ -4,6 +4,7 @@ import type { SerializedHeadingNode } from "@lexical/rich-text";
 import type { SerializedLinkNode } from "@lexical/link";
 import { convertText } from "./text";
 import { convertLink } from "./link";
+import { getBlockStyle } from "./block-style";
 
 const HEADING_MAP = {
   h1: HeadingLevel.HEADING_1,
@@ -26,5 +27,6 @@ export function convertHeading(node: SerializedHeadingNode): Paragraph {
   return new Paragraph({
     heading: HEADING_MAP[node.tag],
     children: runs,
+    ...getBlockStyle(node),
   });
 }

@@ -50,18 +50,29 @@ Reads the current editor state and returns a `.docx` `Blob`. Use this inside a R
 
 Converts a serialized editor state directly to a `.docx` `Blob`. Has zero dependency on the Lexical runtime — suitable for SSR, testing, and Node.js environments.
 
-## Supported nodes
+## Roadmap
 
-| Node             | Details                                                                   |
-| ---------------- | ------------------------------------------------------------------------- |
-| `paragraph`      | Plain paragraph                                                           |
-| `heading`        | h1 – h6                                                                   |
-| `text`           | Bold, italic, underline, strikethrough, subscript, superscript, highlight |
-| `list`           | Bullet and numbered, nested                                               |
-| `link`           | Hyperlink (inline)                                                        |
-| `table`          | Rows, cells, header rows, col/row span                                    |
-| `horizontalrule` | Horizontal rule (rendered as VML rect)                                    |
-| `page-break`     | Page break                                                                |
+### Nodes
+
+- [x] Paragraph
+- [x] Heading (h1–h6)
+- [x] Text (bold, italic, underline, strikethrough, subscript, superscript, highlight)
+- [x] List (bullet, numbered)
+- [x] Link (hyperlink)
+- [x] Table (header rows, col/row span)
+- [x] Horizontal rule
+- [x] Page break
+- [ ] Image
+- [ ] Code block
+
+### Styling
+
+- [x] Text formatting (bitmask: bold, italic, underline, strikethrough, subscript, superscript, highlight)
+- [x] Block alignment (left, center, right, justify)
+- [x] Block indent
+- [ ] Inline style (font color, font size, font family, background color)
+- [ ] Table styling (cell background, borders, padding)
+- [ ] Document defaults (default font, page margins)
 
 ## License
 

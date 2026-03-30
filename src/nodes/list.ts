@@ -4,6 +4,7 @@ import type { SerializedLinkNode } from "@lexical/link";
 import type { SerializedTextNode } from "lexical";
 import { convertText } from "./text";
 import { convertLink } from "./link";
+import { getBlockStyle } from "./block-style";
 
 export function convertList(node: SerializedListNode): Paragraph[] {
   return node.children
@@ -19,6 +20,8 @@ export function convertList(node: SerializedListNode): Paragraph[] {
         return [];
       });
 
+      const { indent: _, ...listItemStyle } = getBlockStyle(item);
+
       return new Paragraph({
         bullet: node.listType === "bullet" ? { level: item.indent } : undefined,
         numbering:
@@ -26,6 +29,7 @@ export function convertList(node: SerializedListNode): Paragraph[] {
             ? { reference: "default-numbering", level: item.indent }
             : undefined,
         children: runs,
+        ...listItemStyle,
       });
     });
 }
